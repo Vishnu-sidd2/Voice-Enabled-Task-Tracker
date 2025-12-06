@@ -1,0 +1,81 @@
+.task-board {
+  display: flex;
+  gap: 24px;
+  height: 100%;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+
+.board-column {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(30, 41, 59, 0.4);
+  /* Darker glass */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.column-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.column-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  min-height: 100px;
+  padding-right: 4px;
+  /* Space for scrollbar */
+}
+
+.empty-column {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 0;
+  font-size: 14px;
+  border: 2px dashed rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  margin-top: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .task-board {
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-bottom: 100px;
+    /* Space for voice button */
+  }
+
+  .board-column {
+    min-width: 0;
+    max-width: none;
+    width: 100%;
+    flex: none;
+    /* Don't flex, just take height as needed */
+  }
+
+  .column-content {
+    max-height: 500px;
+    /* Limit height of each column on mobile so you can scroll to others */
+  }
+}
